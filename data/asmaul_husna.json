@@ -1,0 +1,128 @@
+[
+  { "id": 0, "arabic_name": "الله", "english_name": "Allah", "abjad_value": 66, "meaning": "واحد، یکتا، سب کا معبود" },
+  { "id": 1, "arabic_name": "الرحمن", "english_name": "Ar-Rahman", "abjad_value": 298, "meaning": "نہایت مہربان" },
+  { "id": 2, "arabic_name": "الرحيم", "english_name": "Ar-Rahim", "abjad_value": 259, "meaning": "ہمیشہ رحم فرمانے والا" },
+  { "id": 3, "arabic_name": "الملك", "english_name": "Al-Malik", "abjad_value": 90, "meaning": "حقیقی بادشاہ" },
+  { "id": 4, "arabic_name": "القدوس", "english_name": "Al-Quddus", "abjad_value": 170, "meaning": "ہر نقص سے پاک" },
+  { "id": 5, "arabic_name": "السلام", "english_name": "As-Salam", "abjad_value": 131, "meaning": "سلامتی دینے والا" },
+  { "id": 6, "arabic_name": "المؤمن", "english_name": "Al-Mu'min", "abjad_value": 136, "meaning": "امن دینے والا" },
+  { "id": 7, "arabic_name": "المهيمن", "english_name": "Al-Muhaymin", "abjad_value": 145, "meaning": "نگہبان" },
+  { "id": 8, "arabic_name": "العزيز", "english_name": "Al-Aziz", "abjad_value": 94, "meaning": "زبردست، غالب" },
+  { "id": 9, "arabic_name": "الجبار", "english_name": "Al-Jabbar", "abjad_value": 206, "meaning": "زبردست قوت والا" },
+  { "id": 10, "arabic_name": "المتكبر", "english_name": "Al-Mutakabbir", "abjad_value": 662, "meaning": "بزرگی والا" },
+
+  { "id": 11, "arabic_name": "الخالق", "english_name": "Al-Khaliq", "abjad_value": 731, "meaning": "پیدا کرنے والا" },
+  { "id": 12, "arabic_name": "البارئ", "english_name": "Al-Bari", "abjad_value": 213, "meaning": "بنانے والا" },
+  { "id": 13, "arabic_name": "المصور", "english_name": "Al-Musawwir", "abjad_value": 336, "meaning": "صورت بنانے والا" },
+  { "id": 14, "arabic_name": "الغفار", "english_name": "Al-Ghaffar", "abjad_value": 1281, "meaning": "بار بار معاف کرنے والا" },
+  { "id": 15, "arabic_name": "القهار", "english_name": "Al-Qahhar", "abjad_value": 306, "meaning": "سب پر غالب" },
+  { "id": 16, "arabic_name": "الوهاب", "english_name": "Al-Wahhab", "abjad_value": 14, "meaning": "بے حساب عطا کرنے والا" },
+  { "id": 17, "arabic_name": "الرزاق", "english_name": "Ar-Razaq", "abjad_value": 308, "meaning": "رزق دینے والا" },
+  { "id": 18, "arabic_name": "الفتاح", "english_name": "Al-Fattah", "abjad_value": 489, "meaning": "کھولنے والا، فیصلہ کرنے والا" },
+  { "id": 19, "arabic_name": "العليم", "english_name": "Al-Alim", "abjad_value": 150, "meaning": "سب کچھ جاننے والا" },
+
+  { "id": 20, "arabic_name": "القابض", "english_name": "Al-Qabid", "abjad_value": 903, "meaning": "روک لینے والا" },
+  { "id": 21, "arabic_name": "الباسط", "english_name": "Al-Basit", "abjad_value": 76, "meaning": "کشادگی دینے والا" },
+  { "id": 22, "arabic_name": "الخافض", "english_name": "Al-Khafid", "abjad_value": 1481, "meaning": "پست کرنے والا" },
+  { "id": 23, "arabic_name": "الرافع", "english_name": "Ar-Rafi", "abjad_value": 351, "meaning": "بلند کرنے والا" },
+  { "id": 24, "arabic_name": "المعز", "english_name": "Al-Mu'izz", "abjad_value": 117, "meaning": "عزت دینے والا" },
+  { "id": 25, "arabic_name": "المذل", "english_name": "Al-Mudhill", "abjad_value": 770, "meaning": "ذلت دینے والا" },
+
+  { "id": 26, "arabic_name": "السميع", "english_name": "As-Sami", "abjad_value": 180, "meaning": "سب کچھ سننے والا" },
+  { "id": 27, "arabic_name": "البصير", "english_name": "Al-Basir", "abjad_value": 302, "meaning": "سب کچھ دیکھنے والا" },
+  { "id": 28, "arabic_name": "الحكم", "english_name": "Al-Hakam", "abjad_value": 68, "meaning": "فیصلہ کرنے والا" },
+  { "id": 29, "arabic_name": "العدل", "english_name": "Al-Adl", "abjad_value": 104, "meaning": "انصاف کرنے والا" },
+  { "id": 30, "arabic_name": "اللطيف", "english_name": "Al-Latif", "abjad_value": 129, "meaning": "نرمی فرمانے والا" },
+
+  { "id": 31, "arabic_name": "الخبير", "english_name": "Al-Khabir", "abjad_value": 812, "meaning": "باخبر" },
+  { "id": 32, "arabic_name": "الحليم", "english_name": "Al-Halim", "abjad_value": 88, "meaning": "بردبار" },
+  { "id": 33, "arabic_name": "العظيم", "english_name": "Al-Azim", "abjad_value": 1020, "meaning": "بہت عظمت والا" },
+  { "id": 34, "arabic_name": "الغفور", "english_name": "Al-Ghafur", "abjad_value": 1286, "meaning": "بہت معاف کرنے والا" },
+  { "id": 35, "arabic_name": "الشكور", "english_name": "Ash-Shakur", "abjad_value": 526, "meaning": "قدردان" },
+
+  { "id": 36, "arabic_name": "العلي", "english_name": "Al-Ali", "abjad_value": 110, "meaning": "سب سے بلند" },
+  { "id": 37, "arabic_name": "الكبير", "english_name": "Al-Kabir", "abjad_value": 232, "meaning": "سب سے بڑا" },
+  { "id": 38, "arabic_name": "الحفيظ", "english_name": "Al-Hafiz", "abjad_value": 998, "meaning": "حفاظت کرنے والا" },
+  { "id": 39, "arabic_name": "المقيت", "english_name": "Al-Muqit", "abjad_value": 550, "meaning": "روزی پہنچانے والا" },
+  { "id": 40, "arabic_name": "الحسيب", "english_name": "Al-Hasib", "abjad_value": 80, "meaning": "حساب لینے والا" },
+
+  { "id": 41, "arabic_name": "الجليل", "english_name": "Al-Jalil", "abjad_value": 73, "meaning": "جلال والا" },
+  { "id": 42, "arabic_name": "الكريم", "english_name": "Al-Karim", "abjad_value": 270, "meaning": "بہت کرم کرنے والا" },
+  { "id": 43, "arabic_name": "الرقيب", "english_name": "Ar-Raqib", "abjad_value": 312, "meaning": "نگرانی کرنے والا" },
+  { "id": 44, "arabic_name": "المجيب", "english_name": "Al-Mujib", "abjad_value": 55, "meaning": "دعائیں قبول کرنے والا" },
+  { "id": 45, "arabic_name": "الواسع", "english_name": "Al-Wasi", "abjad_value": 137, "meaning": "وسیع رحمت والا" },
+
+  { "id": 46, "arabic_name": "الحكيم", "english_name": "Al-Hakim", "abjad_value": 78, "meaning": "حکمت والا" },
+  { "id": 47, "arabic_name": "الودود", "english_name": "Al-Wadud", "abjad_value": 20, "meaning": "محبت کرنے والا" },
+  { "id": 48, "arabic_name": "المجيد", "english_name": "Al-Majid", "abjad_value": 57, "meaning": "بزرگی والا" },
+  { "id": 49, "arabic_name": "الباعث", "english_name": "Al-Ba'ith", "abjad_value": 73, "meaning": "دوبارہ اٹھانے والا" },
+
+  { "id": 50, "arabic_name": "الشهيد", "english_name": "Ash-Shahid", "abjad_value": 319, "meaning": "ہر چیز پر گواہ" },
+  { "id": 51, "arabic_name": "الحق", "english_name": "Al-Haqq", "abjad_value": 108, "meaning": "سچا" },
+  { "id": 52, "arabic_name": "الوكيل", "english_name": "Al-Wakil", "abjad_value": 66, "meaning": "کارساز" },
+  { "id": 53, "arabic_name": "القوي", "english_name": "Al-Qawiyy", "abjad_value": 116, "meaning": "طاقتور" },
+  { "id": 54, "arabic_name": "المتين", "english_name": "Al-Matin", "abjad_value": 500, "meaning": "مضبوط" },
+
+  { "id": 55, "arabic_name": "الولي", "english_name": "Al-Waliyy", "abjad_value": 46, "meaning": "دوست، مددگار" },
+  { "id": 56, "arabic_name": "الحميد", "english_name": "Al-Hamid", "abjad_value": 62, "meaning": "قابلِ تعریف" },
+  { "id": 57, "arabic_name": "المحصي", "english_name": "Al-Muhsi", "abjad_value": 148, "meaning": "ہر چیز گننے والا" },
+
+  { "id": 58, "arabic_name": "المبدئ", "english_name": "Al-Mubdi", "abjad_value": 56, "meaning": "پہلی بار پیدا کرنے والا" },
+  { "id": 59, "arabic_name": "المعيد", "english_name": "Al-Mu'id", "abjad_value": 124, "meaning": "دوبارہ لوٹانے والا" },
+  { "id": 60, "arabic_name": "المحيي", "english_name": "Al-Muhyi", "abjad_value": 68, "meaning": "زندگی دینے والا" },
+  { "id": 61, "arabic_name": "المميت", "english_name": "Al-Mumit", "abjad_value": 490, "meaning": "موت دینے والا" },
+
+  { "id": 62, "arabic_name": "الحي", "english_name": "Al-Hayy", "abjad_value": 18, "meaning": "ہمیشہ زندہ" },
+  { "id": 63, "arabic_name": "القيوم", "english_name": "Al-Qayyum", "abjad_value": 156, "meaning": "سب کو قائم رکھنے والا" },
+
+  { "id": 64, "arabic_name": "الواجد", "english_name": "Al-Wajid", "abjad_value": 14, "meaning": "سب کچھ پانے والا" },
+  { "id": 65, "arabic_name": "الماجد", "english_name": "Al-Majid", "abjad_value": 48, "meaning": "عزت والا" },
+  { "id": 66, "arabic_name": "الواحد", "english_name": "Al-Wahid", "abjad_value": 19, "meaning": "اکیلا" },
+  { "id": 67, "arabic_name": "الأحد", "english_name": "Al-Ahad", "abjad_value": 13, "meaning": "یگانہ" },
+
+  { "id": 68, "arabic_name": "الصمد", "english_name": "As-Samad", "abjad_value": 134, "meaning": "سب کی حاجت روائی کرنے والا" },
+  { "id": 69, "arabic_name": "القادر", "english_name": "Al-Qadir", "abjad_value": 305, "meaning": "قدرت والا" },
+  { "id": 70, "arabic_name": "المقتدر", "english_name": "Al-Muqtadir", "abjad_value": 744, "meaning": "پورا اختیار رکھنے والا" },
+
+  { "id": 71, "arabic_name": "المقدم", "english_name": "Al-Muqaddim", "abjad_value": 184, "meaning": "آگے کرنے والا" },
+  { "id": 72, "arabic_name": "المؤخر", "english_name": "Al-Mu'akhkhir", "abjad_value": 846, "meaning": "پیچھے کرنے والا" },
+
+  { "id": 73, "arabic_name": "الأول", "english_name": "Al-Awwal", "abjad_value": 37, "meaning": "سب سے پہلا" },
+  { "id": 74, "arabic_name": "الآخر", "english_name": "Al-Akhir", "abjad_value": 801, "meaning": "سب سے آخر" },
+
+  { "id": 75, "arabic_name": "الظاهر", "english_name": "Az-Zahir", "abjad_value": 1106, "meaning": "ظاہر" },
+  { "id": 76, "arabic_name": "الباطن", "english_name": "Al-Batin", "abjad_value": 62, "meaning": "پوشیدہ" },
+
+  { "id": 77, "arabic_name": "الوالي", "english_name": "Al-Wali", "abjad_value": 47, "meaning": "حکمرانی کرنے والا" },
+  { "id": 78, "arabic_name": "المتعالي", "english_name": "Al-Muta'ali", "abjad_value": 551, "meaning": "سب سے بلند" },
+
+  { "id": 79, "arabic_name": "البر", "english_name": "Al-Barr", "abjad_value": 202, "meaning": "نیکی کرنے والا" },
+  { "id": 80, "arabic_name": "ٱلتَّوَّاب", "english_name": "Al-Tawwab", "abjad_value": 409, "meaning": "بہت توبہ قبول کرنے والا" },
+
+  { "id": 81, "arabic_name": "المنتقم", "english_name": "Al-Muntaqim", "abjad_value": 630, "meaning": "بدلہ لینے والا" },
+  { "id": 82, "arabic_name": "العفو", "english_name": "Al-Afuww", "abjad_value": 156, "meaning": "معاف کرنے والا" },
+  { "id": 83, "arabic_name": "الرؤوف", "english_name": "Ar-Rauf", "abjad_value": 286, "meaning": "نہایت شفیق" },
+
+  { "id": 84, "arabic_name": "مالك الملك", "english_name": "Malik-al-Mulk", "abjad_value": 212, "meaning": "بادشاہی کا مالک" },
+  { "id": 85, "arabic_name": "ذو الجلال والإكرام", "english_name": "Dhu-al-Jalal wa-al-Ikram", "abjad_value": 1100, "meaning": "جلال اور بزرگی والا" },
+
+  { "id": 86, "arabic_name": "المقسط", "english_name": "Al-Muqist", "abjad_value": 209, "meaning": "انصاف کرنے والا" },
+  { "id": 87, "arabic_name": "الجامع", "english_name": "Al-Jami", "abjad_value": 112, "meaning": "جمع کرنے والا" },
+
+  { "id": 88, "arabic_name": "الغني", "english_name": "Al-Ghani", "abjad_value": 1060, "meaning": "بے نیاز" },
+  { "id": 89, "arabic_name": "المغني", "english_name": "Al-Mughni", "abjad_value": 1100, "meaning": "غنی کرنے والا" },
+
+  { "id": 90, "arabic_name": "المانع", "english_name": "Al-Mani", "abjad_value": 161, "meaning": "روکنے والا" },
+  { "id": 91, "arabic_name": "الضار", "english_name": "Ad-Darr", "abjad_value": 1001, "meaning": "نقصان پہنچانے والا" },
+  { "id": 92, "arabic_name": "النافع", "english_name": "An-Nafi", "abjad_value": 201, "meaning": "نفع دینے والا" },
+
+  { "id": 93, "arabic_name": "النور", "english_name": "An-Nur", "abjad_value": 256, "meaning": "روشنی دینے والا" },
+  { "id": 94, "arabic_name": "الهادي", "english_name": "Al-Hadi", "abjad_value": 20, "meaning": "ہدایت دینے والا" },
+
+  { "id": 95, "arabic_name": "البديع", "english_name": "Al-Badi", "abjad_value": 86, "meaning": "بے مثال پیدا کرنے والا" },
+  { "id": 96, "arabic_name": "الباقي", "english_name": "Al-Baqi", "abjad_value": 113, "meaning": "ہمیشہ باقی رہنے والا" },
+
+  { "id": 97, "arabic_name": "الوارث", "english_name": "Al-Warith", "abjad_value": 707, "meaning": "سب کا وارث" },
+  { "id": 98, "arabic_name": "الرشيد", "english_name": "Ar-Rashid", "abjad_value": 514, "meaning": "صحیح راستہ دکھانے والا" },
+  { "id": 99, "arabic_name": "الصبور", "english_name": "As-Sabur", "abjad_value": 298, "meaning": "بہت صبر کرنے والا" }
+]
