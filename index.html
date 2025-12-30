@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISM-E-AZAM Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>ISM-E-AZAM Calculator</h1>
+            <h1>اسمِ اعظم کیلکولیٹر</h1>
+            <p class="subtitle">ابجدی حساب کے ذریعے اسمائے الٰہی معلوم کریں</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- SECTION A: INPUT FORM -->
+            <section class="input-section card">
+                <h2>Enter Your Name</h2>
+                <div class="input-group">
+                    <label for="nameInput">Person's Name (Arabic or Urdu):</label>
+                    <input 
+                        type="text" 
+                        id="nameInput" 
+                        class="name-input" 
+                        placeholder="Enter name in Arabic or Urdu..."
+                        autocomplete="off"
+                        autofocus
+                    >
+                    <small class="help-text">You can enter the name in Arabic or Urdu script</small>
+                </div>
+
+                <div class="button-group">
+                    <button id="calculateBtn" class="btn btn-primary">Calculate Abjad Value</button>
+                    <button id="clearBtn" class="btn btn-secondary">Clear</button>
+                </div>
+
+                <!-- Error Messages -->
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+            </section>
+
+            <!-- SECTION B: CALCULATED VALUE & INPUT BREAKDOWN -->
+            <section id="resultSection" class="result-section" style="display: none;">
+                
+                <!-- Input Summary -->
+                <div class="card">
+                    <h3>Input Summary</h3>
+                    <div class="input-summary">
+                        <div class="summary-item">
+                            <label>Original Name:</label>
+                            <span id="originalName" class="value"></span>
+                        </div>
+                        <div class="summary-item">
+                            <label>Cleaned Name:</label>
+                            <span id="cleanedName" class="value"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Character Breakdown -->
+                <div class="card">
+                    <h3>Character-by-Character Breakdown</h3>
+                    <table class="breakdown-table">
+                        <thead>
+                            <tr>
+                                <th>Position</th>
+                                <th>Character</th>
+                                <th>Abjad Value</th>
+                            </tr>
+                        </thead>
+                        <tbody id="breakdownTableBody">
+                            <!-- Populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Total Value -->
+                <div class="card total-value-card">
+                    <h3>Total Abjad Value</h3>
+                    <div class="total-value-display">
+                        <div class="value-circle">
+                            <span id="totalValue" class="total-number">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION C: DIVINE NAME MATCH -->
+                <div class="card">
+                    <h3>Divine Name Match Result</h3>
+                    <div id="matchResult" class="match-result">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Loading Indicator -->
+                <div id="loadingIndicator" class="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Searching for matches...</p>
+                </div>
+            </section>
+
+            <!-- Empty State -->
+            <section id="emptyState" class="empty-state card">
+                <p>Enter a name and click "Calculate Abjad Value" to get started</p>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>ISM-E-AZAM Calculator v2.0 (Client-Side) | Based on Islamic Numerology (Abjad System)</p>
+        </footer>
+    </div>
+
+    <!-- Load calculator modules -->
+    <script src="../calculator.js"></script>
+    <script src="data-loader.js"></script>
+    <script src="app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

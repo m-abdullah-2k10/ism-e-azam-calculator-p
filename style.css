@@ -1,0 +1,692 @@
+/* ========================================
+   ISM-E-AZAM CALCULATOR - STYLESHEET
+   Professional Islamic Calculator UI
+   ======================================== */
+
+:root {
+    /* Color Palette */
+    --primary-color: #2c5282;
+    --primary-dark: #1a365d;
+    --primary-light: #ebf8ff;
+    --accent-color: #d69e2e;
+    --success-color: #22863a;
+    --error-color: #cb2431;
+    --warning-color: #e67e22;
+    
+    /* Neutral Colors */
+    --bg-light: #f8f9fa;
+    --bg-white: #ffffff;
+    --text-dark: #2d3748;
+    --text-gray: #718096;
+    --border-color: #e2e8f0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    
+    /* Typography */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-arabic: 'Arial', 'Simplified Arabic', 'Traditional Arabic', sans-serif;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
+    --font-size-2xl: 2rem;
+    
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    
+    /* Z-index */
+    --z-base: 1;
+    --z-dropdown: 100;
+    --z-modal: 1000;
+}
+
+/* ========================================
+   RESET & BASE STYLES
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* ========================================
+   LAYOUT
+   ======================================== */
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: var(--spacing-xl) var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.header h1 {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-xs);
+}
+
+.subtitle {
+    font-size: var(--font-size-lg);
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.main-content {
+    flex: 1;
+    margin-bottom: var(--spacing-lg);
+}
+
+.footer {
+    background-color: var(--primary-dark);
+    color: white;
+    text-align: center;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    margin-top: var(--spacing-lg);
+    font-size: var(--font-size-sm);
+    opacity: 0.9;
+}
+
+/* ========================================
+   CARDS & SECTIONS
+   ======================================== */
+
+.card {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: 0 2px 4px var(--shadow-color);
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+    color: var(--primary-color);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: var(--spacing-sm);
+}
+
+/* ========================================
+   FORMS & INPUTS
+   ======================================== */
+
+.input-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: var(--font-size-base);
+}
+
+.name-input {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-lg);
+    font-family: var(--font-arabic);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+    direction: rtl;
+    text-align: right;
+}
+
+.name-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.1);
+}
+
+.name-input::placeholder {
+    color: #bbb;
+}
+
+.help-text {
+    display: block;
+    color: var(--text-gray);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-xs);
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+
+.button-group {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    flex: 1;
+    min-width: 150px;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(44, 82, 130, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background-color: var(--border-color);
+    color: var(--text-dark);
+}
+
+.btn-secondary:hover {
+    background-color: #cbd5e0;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ========================================
+   ERROR & MESSAGES
+   ======================================== */
+
+.error-message {
+    background-color: #fdeaea;
+    border-left: 4px solid var(--error-color);
+    color: var(--error-color);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-top: var(--spacing-md);
+    font-size: var(--font-size-base);
+}
+
+/* ========================================
+   INPUT SUMMARY
+   ======================================== */
+
+.input-summary {
+    display: grid;
+    gap: var(--spacing-md);
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md);
+    background-color: var(--bg-light);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--accent-color);
+}
+
+.summary-item label {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.summary-item .value {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--primary-color);
+    font-family: var(--font-arabic);
+}
+
+/* ========================================
+   CHARACTER BREAKDOWN TABLE
+   ======================================== */
+
+.breakdown-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--spacing-md);
+}
+
+.breakdown-table th {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+    padding: var(--spacing-md);
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.breakdown-table td {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.breakdown-table tbody tr:hover {
+    background-color: var(--bg-light);
+}
+
+.breakdown-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.breakdown-table .character {
+    font-size: var(--font-size-lg);
+    font-family: var(--font-arabic);
+    font-weight: 600;
+}
+
+.breakdown-table .value {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* ========================================
+   TOTAL VALUE DISPLAY
+   ======================================== */
+
+.total-value-card {
+    background: linear-gradient(135deg, var(--primary-light) 0%, #e6f4ff 100%);
+    border: 2px solid var(--primary-color);
+}
+
+.total-value-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: var(--spacing-lg);
+}
+
+.value-circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 16px rgba(44, 82, 130, 0.3);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.total-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: white;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 8px 16px rgba(44, 82, 130, 0.3);
+    }
+    50% {
+        box-shadow: 0 8px 24px rgba(44, 82, 130, 0.5);
+    }
+}
+
+/* ========================================
+   MATCH RESULT
+   ======================================== */
+
+.match-result {
+    margin-top: var(--spacing-md);
+}
+
+.direct-match {
+    background-color: #f0fdf4;
+    border-left: 4px solid var(--success-color);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+}
+
+.direct-match h4 {
+    color: var(--success-color);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-lg);
+}
+
+.divine-names-list {
+    display: grid;
+    gap: var(--spacing-md);
+}
+
+.divine-name-item {
+    background-color: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border: 2px solid #dcfce7;
+    transition: all 0.3s ease;
+}
+
+.divine-name-item:hover {
+    box-shadow: 0 4px 12px rgba(34, 134, 58, 0.2);
+    border-color: var(--success-color);
+}
+
+.divine-name-item .name-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.divine-name-item .arabic-name {
+    font-family: var(--font-arabic);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.divine-name-item .english-name {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.divine-name-item .value-badge {
+    background-color: var(--success-color);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: 20px;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+}
+
+.divine-name-item .meaning {
+    color: var(--text-gray);
+    font-style: italic;
+}
+
+/* Two-Name Combination */
+.combination-match {
+    background-color: #fef3c7;
+    border-left: 4px solid var(--warning-color);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+}
+
+.combination-match h4 {
+    color: var(--warning-color);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-lg);
+}
+
+.combinations-list {
+    display: grid;
+    gap: var(--spacing-md);
+}
+
+.combination-item {
+    background-color: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border: 2px solid #fde68a;
+    transition: all 0.3s ease;
+}
+
+.combination-item:hover {
+    box-shadow: 0 4px 12px rgba(230, 126, 34, 0.2);
+    border-color: var(--warning-color);
+}
+
+.combination-formula {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.combination-name {
+    flex: 1;
+    min-width: 120px;
+}
+
+.combination-name .arabic-name {
+    font-family: var(--font-arabic);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.combination-name .english-name {
+    font-size: var(--font-size-base);
+    color: var(--text-dark);
+}
+
+.combination-name .value {
+    font-weight: 700;
+    color: var(--warning-color);
+}
+
+.plus-sign {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--text-gray);
+}
+
+.equals-sign {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--text-gray);
+}
+
+.total-sum {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--warning-color);
+}
+
+/* ========================================
+   EMPTY STATE
+   ======================================== */
+
+.empty-state {
+    text-align: center;
+    color: var(--text-gray);
+    padding: var(--spacing-xl);
+}
+
+.empty-state p {
+    font-size: var(--font-size-lg);
+}
+
+/* ========================================
+   LOADING INDICATOR
+   ======================================== */
+
+.loading {
+    text-align: center;
+    padding: var(--spacing-xl);
+}
+
+.spinner {
+    border: 4px solid var(--border-color);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto var(--spacing-md);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading p {
+    color: var(--text-gray);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+    :root {
+        --spacing-lg: 1.5rem;
+        --font-size-2xl: 1.5rem;
+    }
+
+    .container {
+        padding: 0 var(--spacing-xs);
+    }
+
+    .header {
+        padding: var(--spacing-lg) var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .header h1 {
+        font-size: var(--font-size-xl);
+    }
+
+    .subtitle {
+        font-size: var(--font-size-base);
+    }
+
+    .card {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .summary-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .value-circle {
+        width: 140px;
+        height: 140px;
+    }
+
+    .total-number {
+        font-size: 2.5rem;
+    }
+
+    .combination-formula {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .plus-sign,
+    .equals-sign {
+        align-self: flex-start;
+    }
+
+    .breakdown-table {
+        font-size: var(--font-size-sm);
+    }
+
+    .breakdown-table th,
+    .breakdown-table td {
+        padding: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --font-size-lg: 1.1rem;
+        --font-size-base: 0.95rem;
+    }
+
+    .header h1 {
+        font-size: var(--font-size-lg);
+    }
+
+    .card h3 {
+        font-size: var(--font-size-base);
+    }
+
+    .name-input {
+        font-size: var(--font-size-base);
+    }
+
+    .value-circle {
+        width: 120px;
+        height: 120px;
+    }
+
+    .total-number {
+        font-size: 2rem;
+    }
+}
+
+/* ========================================
+   RTL SUPPORT
+   ======================================== */
+
+[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .summary-item {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .divine-name-item .name-header {
+    flex-direction: row-reverse;
+}
