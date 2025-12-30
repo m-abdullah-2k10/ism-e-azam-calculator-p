@@ -62,7 +62,7 @@ function buildNamesIndex() {
  * Initialize the calculator with all necessary data
  */
 async function initializeApp() {
-  console.log("[INFO] Initializing ISM Calculator...");
+  console.log("[INFO] Initializing ism_e_azam_calculator_p...");
   
   try {
     // Load Divine Names data
@@ -75,9 +75,9 @@ async function initializeApp() {
     }
     
     // Initialize the calculator with the data
-    window.IsmCalculator.initializeCalculator(ABJAD_VALUES, DIVINE_NAMES, NAMES_INDEX);
-    
-    console.log("[OK] ISM Calculator initialized successfully");
+    window.ism_e_azam_calculator_p.initializeCalculator(ABJAD_VALUES, DIVINE_NAMES, NAMES_INDEX);
+
+    console.log("[OK] ism_e_azam_calculator_p initialized successfully");
     console.log(`[INFO] Abjad values loaded: ${Object.keys(ABJAD_VALUES).length}`);
     console.log(`[INFO] Divine names loaded: ${DIVINE_NAMES.length}`);
     console.log(`[INFO] Index entries: ${Object.keys(NAMES_INDEX).length}`);

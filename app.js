@@ -65,7 +65,7 @@ async function handleCalculate() {
 
   try {
     // Calculate Abjad value using client-side calculator
-    const calcResult = window.IsmCalculator.calculateAbjad(name);
+    const calcResult = window.ism_e_azam_calculator_p.calculateAbjad(name);
 
     if (!calcResult.success) {
       showError(calcResult.error || 'Failed to calculate Abjad value');
@@ -80,7 +80,7 @@ async function handleCalculate() {
     displayCalculationResults(calcResult);
 
     // Find matching Divine Names using client-side matcher
-    const matchResult = window.IsmCalculator.matchDivineNames(calcResult.totalValue);
+    const matchResult = window.ism_e_azam_calculator_p.matchDivineNames(calcResult.totalValue);
 
     if (matchResult.success) {
       appState.lastCalculationResult = matchResult;

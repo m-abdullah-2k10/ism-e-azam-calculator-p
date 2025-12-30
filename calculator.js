@@ -593,7 +593,7 @@ function getMatcher() {
 function initializeCalculator(abjadValues, divineNames, namesIndex) {
   const loader = getDataLoader();
   loader.loadAll(abjadValues, divineNames, namesIndex);
-  console.log("[INFO] ISM Calculator initialized");
+  console.log("[INFO] ism_e_azam_calculator_p initialized");
   console.log(`[INFO] Data loaded: ${loader.loaded}`);
   console.log(`[INFO] Divine names: ${loader.divineNames.length}`);
 }
@@ -728,7 +728,7 @@ if (typeof module !== 'undefined' && module.exports) {
 
 // For browser global access
 if (typeof window !== 'undefined') {
-  window.IsmCalculator = {
+  window.ism_e_azam_calculator_p = {
     TextProcessor,
     DataLoader,
     getDataLoader,
