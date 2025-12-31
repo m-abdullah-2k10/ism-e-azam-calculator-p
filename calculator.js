@@ -728,7 +728,7 @@ if (typeof module !== 'undefined' && module.exports) {
 
 // For browser global access
 if (typeof window !== 'undefined') {
-  window.ism_e_azam_calculator_p = {
+  window.IsmCalculator = {
     TextProcessor,
     DataLoader,
     getDataLoader,
