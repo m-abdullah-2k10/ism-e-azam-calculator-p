@@ -284,7 +284,7 @@ function setLoading(isLoading) {
   } else {
     loadingIndicator.style.display = 'none';
     calculateBtn.disabled = false;
-    calculateBtn.textContent = 'Calculate Abjad Value';
+    calculateBtn.textContent = 'Calculate Ism-e-Azam';
   }
 }
 
