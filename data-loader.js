@@ -24,7 +24,7 @@ let NAMES_INDEX = {};
 async function loadDivineNames() {
   try {
     // Try to load from JSON file first
-    const response = await fetch('/data/asmaul_husna.json');
+    const response = await fetch('data/asmaul_husna.json');
     if (response.ok) {
       DIVINE_NAMES = await response.json();
       buildNamesIndex();
