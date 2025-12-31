@@ -298,7 +298,7 @@ function setLoading(isLoading) {
 function waitForCalculator() {
   return new Promise((resolve) => {
     const checkInterval = setInterval(() => {
-      if (window.ism_e_azam_calculator_p && window.ism_e_azam_calculator_p.calculateAbjad) {
+      if (window.IsmCalculator && window.IsmCalculator.calculateAbjad) {
         clearInterval(checkInterval);
         resolve();
       }
