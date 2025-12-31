@@ -1,41 +1,92 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISM-E-AZAM Calculator</title>
+    <title>ISM-E-AZAM Calculator | Official Abjad & Divine Name Match</title>
+    <meta name="description"
+        content="Calculate the Abjad value of your name and find its matching Ism-e-Azam (Divine Name). A professional, accurate Islamic numerology tool created by Muhammad Abdullah.">
+    <meta name="keywords"
+        content="Ism-e-Azam, Abjad Calculator, Islamic Numerology, Divine Names, Asmaul Husna match, Muhammad Abdullah">
+    <meta name="author" content="Muhammad Abdullah">
+    <link rel="canonical" href="https://isme-azam-calculator.com">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://isme-azam-calculator.com/">
+    <meta property="og:title" content="ISM-E-AZAM Calculator | Official Abjad & Divine Name Match">
+    <meta property="og:description"
+        content="Professional Abjad calculator to find your Ism-e-Azam. Discover the Divine Name associated with your name.">
+    <meta property="og:image" content="https://isme-azam-calculator.com/profile.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://isme-azam-calculator.com/">
+    <meta property="twitter:title" content="ISM-E-AZAM Calculator | Official Abjad & Divine Name Match">
+    <meta property="twitter:description"
+        content="Professional Abjad calculator to find your Ism-e-Azam. Discover the Divine Name associated with your name.">
+    <meta property="twitter:image" content="https://isme-azam-calculator.com/profile.png">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "ISM-E-AZAM Calculator",
+      "description": "Calculate Abjad values and match names with Ism-e-Azam (Divine Names).",
+      "applicationCategory": "UtilitiesApplication",
+      "author": {
+        "@type": "Person",
+        "name": "Muhammad Abdullah"
+      },
+      "operatingSystem": "All"
+    }
+    </script>
     <link rel="stylesheet" href="style.css">
+
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-PLACEHOLDER');
+    </script>
 </head>
+
 <body>
     <div class="container">
         <!-- Header -->
         <header class="header">
-            <h1>ISM-E-AZAM Calculator</h1>
-            <h1>اسمِ اعظم کیلکولیٹر</h1>
-            <p class="subtitle">ابجدی حساب کے ذریعے اسمائے الٰہی معلوم کریں</p>
+            <div class="header-content">
+                <div class="header-titles">
+                    <h1>ISM-E-AZAM Calculator</h1>
+                    <p class="urdu-title" lang="ur">اسمِ اعظم کیلکولیٹر</p>
+                    <p class="subtitle">ابجدی حساب کے ذریعے اسمائے الٰہی معلوم کریں</p>
+                </div>
+                <div class="creator-badge">
+                    <img src="profile.png" alt="Muhammad Abdullah" class="creator-img">
+                    <span class="creator-name">by Muhammad Abdullah</span>
+                </div>
+            </div>
         </header>
 
         <!-- Main Content -->
         <main class="main-content">
-            
+
             <!-- SECTION A: INPUT FORM -->
             <section class="input-section card">
                 <h2>Enter Your Name</h2>
                 <div class="input-group">
                     <label for="nameInput">Person's Name (Arabic or Urdu):</label>
-                    <input 
-                        type="text" 
-                        id="nameInput" 
-                        class="name-input" 
-                        placeholder="Enter name in Arabic or Urdu..."
-                        autocomplete="off"
-                        autofocus
-                    >
+                    <input type="text" id="nameInput" class="name-input" placeholder="Enter name in Arabic or Urdu..."
+                        autocomplete="off" autofocus>
                     <small class="help-text">You can enter the name in Arabic or Urdu script</small>
                 </div>
 
                 <div class="button-group">
-                    <button id="calculateBtn" class="btn btn-primary">Calculate Abjad Value</button>
+                    <button id="calculateBtn" class="btn btn-primary">Calculate Ism-e-Azam</button>
                     <button id="clearBtn" class="btn btn-secondary">Clear</button>
                 </div>
 
@@ -45,7 +96,7 @@
 
             <!-- SECTION B: CALCULATED VALUE & INPUT BREAKDOWN -->
             <section id="resultSection" class="result-section" style="display: none;">
-                
+
                 <!-- Input Summary -->
                 <div class="card">
                     <h3>Input Summary</h3>
@@ -114,6 +165,30 @@
         <footer class="footer">
             <p>ISM-E-AZAM Calculator v2.0 (Client-Side) | Based on Islamic Numerology (Abjad System)</p>
         </footer>
+
+        <!-- Visitor Counter Widget -->
+        <div id="visitorWidget" class="visitor-widget">
+            <div class="widget-content">
+                <div class="widget-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                            d="M6 21V19C6 17.9391 6.42143 16.9217 7.17157 16.1716C7.92172 15.4214 8.93913 15 10 15H14C15.0609 15 16.0783 15.4214 16.8284 16.1716C17.5786 16.9217 18 17.9391 18 19V21"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="widget-stats">
+                    <span class="stats-label">Total Visitors</span>
+                    <span id="visitorCount" class="stats-value">1,248</span>
+                </div>
+                <div class="widget-status">
+                    <span class="status-pulse"></span>
+                    <span class="status-text">Live</span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Load calculator modules -->
@@ -121,4 +196,5 @@
     <script src="data-loader.js"></script>
     <script src="app.js"></script>
 </body>
+
 </html>

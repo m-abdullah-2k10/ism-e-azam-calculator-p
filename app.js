@@ -325,3 +325,64 @@ if (document.readyState === 'loading') {
     emptyState.style.display = 'block';
   });
 }
+// ========================================
+// VISITOR COUNT LOGIC (GLOBAL)
+// ========================================
+
+async function initVisitorCounter() {
+  const visitorCountEl = document.getElementById('visitorCount');
+  if (!visitorCountEl) return;
+
+  const NAMESPACE = 'isme-azam-calculator';
+  const KEY = 'visitor_count';
+  const API_URL = `https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}/increment`;
+
+  try {
+    // Check if we already incremented this session to avoid spamming the API
+    const sessionToken = sessionStorage.getItem('vignette_counted');
+
+    let visitorData;
+    if (!sessionToken) {
+      // Real increment call
+      const response = await fetch(API_URL);
+      visitorData = await response.json();
+      sessionStorage.setItem('vignette_counted', 'true');
+    } else {
+      // Just fetch the current count without incrementing if already counted in this session
+      const getUrl = `https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}`;
+      const response = await fetch(getUrl);
+      visitorData = await response.json();
+    }
+
+    if (visitorData && visitorData.count) {
+      const currentCount = visitorData.count;
+      // Animate from a slightly lower number for visual effect
+      animateValue(visitorCountEl, currentCount - 1, currentCount, 1500);
+    }
+  } catch (error) {
+    console.error('Error fetching global visitor count:', error);
+    // Fallback to a static number if API fails
+    visitorCountEl.innerHTML = '1,248+';
+  }
+}
+
+function animateValue(obj, start, end, duration) {
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    const value = Math.floor(progress * (end - start) + start);
+    obj.innerHTML = value.toLocaleString();
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    }
+  };
+  window.requestAnimationFrame(step);
+}
+
+// Initialize visitor counter when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initVisitorCounter);
+} else {
+  initVisitorCounter();
+}
