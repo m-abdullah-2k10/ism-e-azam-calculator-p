@@ -30,3 +30,6 @@ Click Choose accounts and select the Search Console property you just verified.
 Click Confirm > Next.
 Select the Web Stream (this is your website) and click Next.
 Review and Submit.
+
+#Link
+https://m-abdullah-2k10.github.io/ism-e-azam-calculator-p/
