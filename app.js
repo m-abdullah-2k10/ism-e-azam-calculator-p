@@ -393,7 +393,7 @@ if (document.readyState === 'loading') {
 
 // Complete Urdu alphabet grouped phonetically
 const urduKeyboardLayout = {
-  'Consonants': ['ا', 'ب', 'پ', 'ت', 'ٹ', 'ث', 'ج', 'چ', 'ح', 'خ', 'د', 'ڈ', 'ذ', 'ر', 'ڑ', 'ز', 'ژ', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ک', 'گ', 'ل', 'م', 'ن', 'ں', 'و', 'ہ', 'ھ', 'ی', 'ے'],
+  'Consonants': ['ا', 'ب', 'پ', 'ت', 'ٹ', 'ث', 'ج', 'چ', 'ح', 'خ', 'د', 'ڈ', 'ذ', 'ر', 'ڑ', 'ز', 'ژ', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ک', 'گ', 'ل', 'م', 'ن', 'ں', 'و', 'ہ', 'ھ','ء', 'ی', 'ے',],
 };
 
 // Initialize keyboard modal
@@ -407,12 +407,10 @@ function initializeUrduKeyboard() {
 
   // Build keyboard layout
   function buildKeyboard() {
+    if (!keyboardLayout) return;
     keyboardLayout.innerHTML = '';
     
     for (const [groupName, letters] of Object.entries(urduKeyboardLayout)) {
-      const group = document.createElement('div');
-      group.className = 'keyboard-key-group';
-      
       letters.forEach(letter => {
         const key = document.createElement('button');
         key.type = 'button';
@@ -422,11 +420,63 @@ function initializeUrduKeyboard() {
           e.preventDefault();
           insertCharacter(letter);
         });
-        group.appendChild(key);
+        keyboardLayout.appendChild(key);
       });
-      
-      keyboardLayout.appendChild(group);
     }
+    // Action row: Backspace, Space, Enter
+    // Backspace
+    const backBtn = document.createElement('button');
+    backBtn.type = 'button';
+    backBtn.className = 'keyboard-key key-backspace';
+    backBtn.title = 'Backspace';
+    backBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6H9l-5 6 5 6h11"></path><line x1="17" y1="9" x2="12" y2="14"></line><line x1="12" y1="9" x2="17" y2="14"></line></svg>';
+    backBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Backspace behavior: remove selection or previous char
+      const start = nameInput.selectionStart;
+      const end = nameInput.selectionEnd;
+      if (start == null) return;
+      if (start === end) {
+        if (start > 0) {
+          nameInput.value = nameInput.value.slice(0, start - 1) + nameInput.value.slice(end);
+          nameInput.selectionStart = nameInput.selectionEnd = start - 1;
+        }
+      } else {
+        nameInput.value = nameInput.value.slice(0, start) + nameInput.value.slice(end);
+        nameInput.selectionStart = nameInput.selectionEnd = start;
+      }
+      nameInput.focus();
+    });
+    keyboardLayout.appendChild(backBtn);
+
+    // Space
+    const spaceBtn = document.createElement('button');
+    spaceBtn.type = 'button';
+    spaceBtn.className = 'keyboard-key key-space';
+    spaceBtn.title = 'Space';
+    spaceBtn.innerHTML = '';
+    spaceBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      insertCharacter(' ');
+    });
+    keyboardLayout.appendChild(spaceBtn);
+
+    // Enter
+    const enterBtn = document.createElement('button');
+    enterBtn.type = 'button';
+    enterBtn.className = 'keyboard-key key-enter';
+    enterBtn.title = 'Enter';
+    enterBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 4 6 9 1"></polyline><path d="M20 6v7a4 4 0 0 1-4 4H4"></path></svg>';
+    enterBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Trigger main calculate button if present, else insert newline
+      if (typeof calculateBtn !== 'undefined' && calculateBtn) {
+        calculateBtn.click();
+      } else {
+        insertCharacter('\n');
+      }
+    });
+    keyboardLayout.appendChild(enterBtn);
   }
 
   // Insert character at cursor position
@@ -443,33 +493,38 @@ function initializeUrduKeyboard() {
 
   // Open keyboard
   function openKeyboard() {
-    keyboardModal.style.display = 'flex';
+    if (!keyboardModal) return;
+    keyboardModal.classList.add('open');
     buildKeyboard();
     nameInput.focus();
   }
 
   // Close keyboard
   function closeKeyboard() {
-    keyboardModal.style.display = 'none';
+    if (!keyboardModal) return;
+    keyboardModal.classList.remove('open');
     nameInput.focus();
   }
 
   // Event listeners
-  keyboardBtn.addEventListener('click', openKeyboard);
-  closeKeyboardBtn.addEventListener('click', closeKeyboard);
-  keyboardOverlay.addEventListener('click', closeKeyboard);
+  if (keyboardBtn) keyboardBtn.addEventListener('click', openKeyboard);
+  if (closeKeyboardBtn) closeKeyboardBtn.addEventListener('click', closeKeyboard);
+  if (keyboardOverlay) keyboardOverlay.addEventListener('click', closeKeyboard);
 
   // Close with Escape key
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && keyboardModal.style.display === 'flex') {
+    if (e.key === 'Escape' && keyboardModal && keyboardModal.classList.contains('open')) {
       closeKeyboard();
     }
   });
 
   // Prevent modal close when clicking inside keyboard container
-  document.querySelector('.keyboard-container').addEventListener('click', (e) => {
-    e.stopPropagation();
-  });
+  const keyboardContainer = document.querySelector('.keyboard-container');
+  if (keyboardContainer) {
+    keyboardContainer.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  }
 }
 
 // Initialize keyboard when DOM is ready

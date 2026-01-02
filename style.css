@@ -967,7 +967,7 @@ body {
     position: fixed;
     inset: 0;
     z-index: var(--z-modal);
-    display: flex !important;
+    display: none; /* hidden by default; JS toggles .open */
     flex-direction: column;
     justify-content: flex-end;
 }
@@ -977,17 +977,28 @@ body {
     inset: 0;
     background-color: rgba(0, 0, 0, 0.5);
     animation: fadeIn 0.2s ease;
-    z-index: -1;
+    z-index: calc(var(--z-modal) + 0); /* overlay sits at modal level */
+}
+
+/* show modal when .open present */
+.keyboard-modal.open {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end; /* keep modal at bottom */
 }
 
 .keyboard-container {
     background-color: var(--bg-white);
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    padding: var(--spacing-md);
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
-    animation: slideUp 0.3s ease;
-    max-height: 80vh;
+    border-radius: 12px;
+    padding: calc(var(--spacing-sm));
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    animation: slideUp 0.25s ease;
+    max-height: 45vh; /* smaller */
     overflow-y: auto;
+    position: relative;
+    z-index: calc(var(--z-modal) + 2);
+    width: min(720px, calc(100% - 48px));
+    margin: 0 auto 12px; /* sit above bottom with small gap */
 }
 
 .keyboard-header {
@@ -1024,28 +1035,50 @@ body {
 
 .keyboard-layout {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
-    gap: var(--spacing-sm);
+    grid-template-columns: repeat(auto-fit, minmax(36px, 1fr));
+    gap: 8px;
     direction: rtl;
+    padding: 8px 0;
 }
 
 .keyboard-key {
     background-color: var(--primary-light);
     border: 2px solid var(--primary-color);
-    border-radius: var(--radius-sm);
-    padding: var(--spacing-sm);
-    font-size: var(--font-size-lg);
+    border-radius: 8px;
+    padding: 6px 8px;
+    font-size: var(--font-size-base);
     font-family: var(--font-arabic);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
     color: var(--primary-color);
-    font-weight: 600;
+    font-weight: 700;
     text-align: center;
-    min-height: 44px;
+    min-height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
     user-select: none;
+    word-break: break-word;
+}
+
+/* Special keys */
+.keyboard-key.key-space {
+    grid-column: span 3;
+    min-height: 42px;
+    background-color: #ffffff;
+    border: 2px solid var(--border-color);
+}
+
+.keyboard-key.key-backspace {
+    background-color: var(--error-color);
+    color: white;
+    border-color: rgba(203,36,49,0.9);
+}
+
+.keyboard-key.key-enter {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: rgba(214,158,46,0.9);
 }
 
 .keyboard-key:hover {
@@ -1064,22 +1097,6 @@ body {
     font-size: var(--font-size-sm);
     opacity: 0.7;
     margin-top: 2px;
-}
-
-.keyboard-key-group {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
-    gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-md);
-    padding-bottom: var(--spacing-md);
-    border-bottom: 1px solid var(--border-color);
-}
-
-.keyboard-key-group:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
 }
 
 @keyframes fadeIn {
@@ -1103,42 +1120,45 @@ body {
 /* Mobile: Full screen keyboard */
 @media (max-width: 768px) {
     .keyboard-modal {
-        justify-content: center;
+        justify-content: flex-end; /* ensure bottom placement on mobile */
+        align-items: center;
     }
 
     .keyboard-container {
-        border-radius: var(--radius-lg);
-        max-height: 90vh;
-        width: calc(100% - 2 * var(--spacing-sm));
-        margin: auto var(--spacing-sm);
+        border-radius: 12px;
+        max-height: 50vh;
+        width: calc(100% - 32px);
+        margin: 0 16px 12px;
     }
 
+
     .keyboard-layout {
-        grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
     }
 
     .keyboard-key {
-        min-height: 48px;
-        font-size: 1.1rem;
-    }
-
-    .keyboard-key-group {
-        grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+        min-height: 40px;
+        font-size: 1rem;
     }
 }
 
 @media (max-width: 480px) {
     .keyboard-layout {
-        grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+        gap: var(--spacing-xs);
     }
 
     .keyboard-key {
-        min-height: 44px;
+        min-height: 48px;
         font-size: 1rem;
-        padding: var(--spacing-xs);
+        padding: var(--spacing-xs) 0.25rem;
     }
 
     .keyboard-header h3 {
         font-size: var(--font-size-base);
+    }
+
+    .keyboard-container {
+        padding: var(--spacing-sm);
     }
 }

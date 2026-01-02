@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urdu Keyboard - Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 style="margin-top: 2rem; text-align: center;">Urdu Keyboard Test</h1>
+        
+        <section class="input-section card" style="margin-top: 2rem;">
+            <h2>Test Input Field</h2>
+            <div class="input-group">
+                <div style="display: flex; align-items: center; gap: var(--spacing-sm); position: relative;">
+                    <div style="flex: 1;">
+                        <label for="nameInput">Enter text:</label>
+                        <input type="text" id="nameInput" class="name-input" placeholder="Click the keyboard button to add Urdu text..."
+                            autocomplete="off" autofocus>
+                    </div>
+                    <button id="keyboardBtn" class="btn-keyboard" title="Open Urdu Keyboard">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+                            <line x1="6" y1="8" x2="6" y2="8"></line>
+                            <line x1="10" y1="8" x2="10" y2="8"></line>
+                            <line x1="14" y1="8" x2="14" y2="8"></line>
+                            <line x1="18" y1="8" x2="18" y2="8"></line>
+                            <line x1="6" y1="12" x2="6" y2="12"></line>
+                            <line x1="10" y1="12" x2="10" y2="12"></line>
+                            <line x1="14" y1="12" x2="14" y2="12"></line>
+                            <line x1="18" y1="12" x2="18" y2="12"></line>
+                            <line x1="6" y1="16" x2="18" y2="16"></line>
+                        </svg>
+                    </button>
+                </div>
+                <small class="help-text">Use the keyboard button to insert Urdu letters</small>
+            </div>
+        </section>
+
+        <!-- URDU KEYBOARD MODAL -->
+        <div id="keyboardModal" class="keyboard-modal" style="display: none;">
+            <div class="keyboard-overlay"></div>
+            <div class="keyboard-container">
+                <div class="keyboard-header">
+                    <h3>Urdu Keyboard</h3>
+                    <button id="closeKeyboardBtn" class="keyboard-close-btn" title="Close Keyboard (Esc)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="keyboard-layout" id="keyboardLayout"></div>
+            </div>
+        </div>
+
+        <div style="margin-top: 2rem; padding: 1.5rem; background: #f0f0f0; border-radius: 8px;">
+            <h3>Test Instructions:</h3>
+            <ul>
+                <li>Click the keyboard button (⌨️) next to the input field</li>
+                <li>The Urdu keyboard modal should appear</li>
+                <li>Click any Urdu letter to insert it into the input field</li>
+                <li>Click the X button to close the keyboard</li>
+                <li>Or press ESC key to close</li>
+                <li>Or click outside the keyboard modal</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Complete Urdu alphabet grouped phonetically
+        const urduKeyboardLayout = {
+          'Consonants': ['ا', 'ب', 'پ', 'ت', 'ٹ', 'ث', 'ج', 'چ', 'ح', 'خ', 'د', 'ڈ', 'ذ', 'ر', 'ڑ', 'ز', 'ژ', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ک', 'گ', 'ل', 'م', 'ن', 'ں', 'و', 'ہ', 'ھ', 'ی', 'ے'],
+        };
+
+        // Initialize keyboard modal
+        function initializeUrduKeyboard() {
+          const keyboardBtn = document.getElementById('keyboardBtn');
+          const keyboardModal = document.getElementById('keyboardModal');
+          const closeKeyboardBtn = document.getElementById('closeKeyboardBtn');
+          const keyboardOverlay = document.querySelector('.keyboard-overlay');
+          const keyboardLayout = document.getElementById('keyboardLayout');
+          const nameInput = document.getElementById('nameInput');
+
+          console.log('Initializing keyboard...', {
+            keyboardBtn: !!keyboardBtn,
+            keyboardModal: !!keyboardModal,
+            closeKeyboardBtn: !!closeKeyboardBtn,
+            keyboardOverlay: !!keyboardOverlay,
+            keyboardLayout: !!keyboardLayout,
+            nameInput: !!nameInput
+          });
+
+          // Build keyboard layout
+          function buildKeyboard() {
+            console.log('Building keyboard...');
+            if (!keyboardLayout) {
+              console.error('keyboardLayout element not found');
+              return;
+            }
+            keyboardLayout.innerHTML = '';
+            
+            for (const [groupName, letters] of Object.entries(urduKeyboardLayout)) {
+              letters.forEach(letter => {
+                const key = document.createElement('button');
+                key.type = 'button';
+                key.className = 'keyboard-key';
+                key.textContent = letter;
+                key.addEventListener('click', (e) => {
+                  e.preventDefault();
+                  insertCharacter(letter);
+                });
+                keyboardLayout.appendChild(key);
+              });
+            }
+            console.log('Keyboard built with', keyboardLayout.children.length, 'keys');
+          }
+
+          // Insert character at cursor position
+          function insertCharacter(char) {
+            const start = nameInput.selectionStart;
+            const end = nameInput.selectionEnd;
+            const text = nameInput.value;
+            
+            // Replace selected text or insert at cursor
+            nameInput.value = text.substring(0, start) + char + text.substring(end);
+            nameInput.selectionStart = nameInput.selectionEnd = start + 1;
+            nameInput.focus();
+            console.log('Inserted character:', char);
+          }
+
+          // Open keyboard
+          function openKeyboard() {
+            console.log('Opening keyboard');
+            keyboardModal.style.display = 'flex';
+            buildKeyboard();
+            nameInput.focus();
+          }
+
+          // Close keyboard
+          function closeKeyboard() {
+            console.log('Closing keyboard');
+            keyboardModal.style.display = 'none';
+            nameInput.focus();
+          }
+
+          // Event listeners
+          if (keyboardBtn) {
+            keyboardBtn.addEventListener('click', () => {
+              console.log('Keyboard button clicked');
+              openKeyboard();
+            });
+          }
+          
+          if (closeKeyboardBtn) {
+            closeKeyboardBtn.addEventListener('click', () => {
+              console.log('Close button clicked');
+              closeKeyboard();
+            });
+          }
+          
+          if (keyboardOverlay) {
+            keyboardOverlay.addEventListener('click', () => {
+              console.log('Overlay clicked');
+              closeKeyboard();
+            });
+          }
+
+          // Close with Escape key
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && keyboardModal.style.display === 'flex') {
+              console.log('ESC key pressed');
+              closeKeyboard();
+            }
+          });
+
+          // Prevent modal close when clicking inside keyboard container
+          const keyboardContainer = document.querySelector('.keyboard-container');
+          if (keyboardContainer) {
+            keyboardContainer.addEventListener('click', (e) => {
+              e.stopPropagation();
+            });
+          }
+
+          console.log('Keyboard initialization complete');
+        }
+
+        // Initialize keyboard when DOM is ready
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initializeUrduKeyboard);
+        } else {
+          initializeUrduKeyboard();
+        }
+    </script>
+</body>
+</html>
