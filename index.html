@@ -79,10 +79,28 @@
             <section class="input-section card">
                 <h2>Enter Your Name</h2>
                 <div class="input-group">
-                    <label for="nameInput">Person's Name (Arabic or Urdu):</label>
-                    <input type="text" id="nameInput" class="name-input" placeholder="Enter name in Arabic or Urdu..."
-                        autocomplete="off" autofocus>
-                    <small class="help-text">You can enter the name in Arabic or Urdu script</small>
+                    <div style="display: flex; align-items: center; gap: var(--spacing-sm); position: relative;">
+                        <div style="flex: 1;">
+                            <label for="nameInput">Person's Name (Arabic or Urdu):</label>
+                            <input type="text" id="nameInput" class="name-input" placeholder="Enter name in Arabic or Urdu..."
+                                autocomplete="off" autofocus>
+                        </div>
+                        <button id="keyboardBtn" class="btn-keyboard" title="Open Urdu Keyboard">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+                                <line x1="6" y1="8" x2="6" y2="8"></line>
+                                <line x1="10" y1="8" x2="10" y2="8"></line>
+                                <line x1="14" y1="8" x2="14" y2="8"></line>
+                                <line x1="18" y1="8" x2="18" y2="8"></line>
+                                <line x1="6" y1="12" x2="6" y2="12"></line>
+                                <line x1="10" y1="12" x2="10" y2="12"></line>
+                                <line x1="14" y1="12" x2="14" y2="12"></line>
+                                <line x1="18" y1="12" x2="18" y2="12"></line>
+                                <line x1="6" y1="16" x2="18" y2="16"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <small class="help-text">You can enter the name in Arabic or Urdu script (or use the keyboard button)</small>
                 </div>
 
                 <div class="button-group">
@@ -93,6 +111,23 @@
                 <!-- Error Messages -->
                 <div id="errorMessage" class="error-message" style="display: none;"></div>
             </section>
+
+            <!-- URDU KEYBOARD MODAL -->
+            <div id="keyboardModal" class="keyboard-modal" style="display: none;">
+                <div class="keyboard-overlay"></div>
+                <div class="keyboard-container">
+                    <div class="keyboard-header">
+                        <h3>Urdu Keyboard</h3>
+                        <button id="closeKeyboardBtn" class="keyboard-close-btn" title="Close Keyboard (Esc)">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="keyboard-layout" id="keyboardLayout"></div>
+                </div>
+            </div>
 
             <!-- SECTION B: CALCULATED VALUE & INPUT BREAKDOWN -->
             <section id="resultSection" class="result-section" style="display: none;">

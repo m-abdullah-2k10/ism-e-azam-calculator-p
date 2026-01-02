@@ -386,3 +386,95 @@ if (document.readyState === 'loading') {
 } else {
   initVisitorCounter();
 }
+
+// ========================================
+// URDU KEYBOARD
+// ========================================
+
+// Complete Urdu alphabet grouped phonetically
+const urduKeyboardLayout = {
+  'Consonants': ['ا', 'ب', 'پ', 'ت', 'ٹ', 'ث', 'ج', 'چ', 'ح', 'خ', 'د', 'ڈ', 'ذ', 'ر', 'ڑ', 'ز', 'ژ', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ک', 'گ', 'ل', 'م', 'ن', 'ں', 'و', 'ہ', 'ھ', 'ی', 'ے'],
+};
+
+// Initialize keyboard modal
+function initializeUrduKeyboard() {
+  const keyboardBtn = document.getElementById('keyboardBtn');
+  const keyboardModal = document.getElementById('keyboardModal');
+  const closeKeyboardBtn = document.getElementById('closeKeyboardBtn');
+  const keyboardOverlay = document.querySelector('.keyboard-overlay');
+  const keyboardLayout = document.getElementById('keyboardLayout');
+  const nameInput = document.getElementById('nameInput');
+
+  // Build keyboard layout
+  function buildKeyboard() {
+    keyboardLayout.innerHTML = '';
+    
+    for (const [groupName, letters] of Object.entries(urduKeyboardLayout)) {
+      const group = document.createElement('div');
+      group.className = 'keyboard-key-group';
+      
+      letters.forEach(letter => {
+        const key = document.createElement('button');
+        key.type = 'button';
+        key.className = 'keyboard-key';
+        key.textContent = letter;
+        key.addEventListener('click', (e) => {
+          e.preventDefault();
+          insertCharacter(letter);
+        });
+        group.appendChild(key);
+      });
+      
+      keyboardLayout.appendChild(group);
+    }
+  }
+
+  // Insert character at cursor position
+  function insertCharacter(char) {
+    const start = nameInput.selectionStart;
+    const end = nameInput.selectionEnd;
+    const text = nameInput.value;
+    
+    // Replace selected text or insert at cursor
+    nameInput.value = text.substring(0, start) + char + text.substring(end);
+    nameInput.selectionStart = nameInput.selectionEnd = start + 1;
+    nameInput.focus();
+  }
+
+  // Open keyboard
+  function openKeyboard() {
+    keyboardModal.style.display = 'flex';
+    buildKeyboard();
+    nameInput.focus();
+  }
+
+  // Close keyboard
+  function closeKeyboard() {
+    keyboardModal.style.display = 'none';
+    nameInput.focus();
+  }
+
+  // Event listeners
+  keyboardBtn.addEventListener('click', openKeyboard);
+  closeKeyboardBtn.addEventListener('click', closeKeyboard);
+  keyboardOverlay.addEventListener('click', closeKeyboard);
+
+  // Close with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && keyboardModal.style.display === 'flex') {
+      closeKeyboard();
+    }
+  });
+
+  // Prevent modal close when clicking inside keyboard container
+  document.querySelector('.keyboard-container').addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+}
+
+// Initialize keyboard when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeUrduKeyboard);
+} else {
+  initializeUrduKeyboard();
+}
