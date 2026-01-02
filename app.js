@@ -433,19 +433,17 @@ function initializeUrduKeyboard() {
     backBtn.addEventListener('click', (e) => {
       e.preventDefault();
       // Backspace behavior: remove selection or previous char
-      const start = nameInput.selectionStart;
-      const end = nameInput.selectionEnd;
-      if (start == null) return;
+      const start = (typeof nameInput.selectionStart === 'number') ? nameInput.selectionStart : 0;
+      const end = (typeof nameInput.selectionEnd === 'number') ? nameInput.selectionEnd : start;
       if (start === end) {
         if (start > 0) {
           nameInput.value = nameInput.value.slice(0, start - 1) + nameInput.value.slice(end);
-          nameInput.selectionStart = nameInput.selectionEnd = start - 1;
+          try { nameInput.selectionStart = nameInput.selectionEnd = start - 1; } catch (e) {}
         }
       } else {
         nameInput.value = nameInput.value.slice(0, start) + nameInput.value.slice(end);
-        nameInput.selectionStart = nameInput.selectionEnd = start;
+        try { nameInput.selectionStart = nameInput.selectionEnd = start; } catch (e) {}
       }
-      nameInput.focus();
     });
     keyboardLayout.appendChild(backBtn);
 
@@ -481,29 +479,27 @@ function initializeUrduKeyboard() {
 
   // Insert character at cursor position
   function insertCharacter(char) {
-    const start = nameInput.selectionStart;
-    const end = nameInput.selectionEnd;
-    const text = nameInput.value;
-    
-    // Replace selected text or insert at cursor
+    const start = (typeof nameInput.selectionStart === 'number') ? nameInput.selectionStart : nameInput.value.length;
+    const end = (typeof nameInput.selectionEnd === 'number') ? nameInput.selectionEnd : start;
+    const text = nameInput.value || '';
     nameInput.value = text.substring(0, start) + char + text.substring(end);
-    nameInput.selectionStart = nameInput.selectionEnd = start + 1;
-    nameInput.focus();
+    try { nameInput.selectionStart = nameInput.selectionEnd = start + char.length; } catch (e) {}
   }
 
   // Open keyboard
   function openKeyboard() {
     if (!keyboardModal) return;
+    // make input readonly to prevent mobile virtual keyboard
+    try { nameInput.setAttribute('readonly', ''); } catch (e) {}
     keyboardModal.classList.add('open');
     buildKeyboard();
-    nameInput.focus();
   }
 
   // Close keyboard
   function closeKeyboard() {
     if (!keyboardModal) return;
+    try { nameInput.removeAttribute('readonly'); } catch (e) {}
     keyboardModal.classList.remove('open');
-    nameInput.focus();
   }
 
   // Event listeners

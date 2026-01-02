@@ -1054,11 +1054,39 @@ body {
     font-weight: 700;
     text-align: center;
     min-height: 36px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     user-select: none;
     word-break: break-word;
+}
+
+/* Control key variants */
+.key-space {
+    grid-column: span 3;
+    min-height: 44px;
+    border-radius: 10px;
+}
+
+.key-backspace {
+    background-color: var(--error-color);
+    color: white;
+    border-color: rgba(0,0,0,0.08);
+}
+
+.key-enter {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: rgba(0,0,0,0.08);
+}
+
+.keyboard-controls-row {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 8px;
+    align-items: center;
+    margin-top: 6px;
 }
 
 /* Special keys */
@@ -1137,8 +1165,8 @@ body {
     }
 
     .keyboard-key {
-        min-height: 40px;
-        font-size: 1rem;
+        min-height: 15px;
+        font-size: 0.7rem;
     }
 }
 
@@ -1149,8 +1177,8 @@ body {
     }
 
     .keyboard-key {
-        min-height: 48px;
-        font-size: 1rem;
+        min-height: 15px;
+        font-size: 0.7rem;
         padding: var(--spacing-xs) 0.25rem;
     }
 
