@@ -391,11 +391,6 @@ if (document.readyState === 'loading') {
 // URDU KEYBOARD
 // ========================================
 
-// Complete Urdu alphabet grouped phonetically
-const urduKeyboardLayout = {
-  'Consonants': ['ا', 'ب', 'پ', 'ت', 'ٹ', 'ث', 'ج', 'چ', 'ح', 'خ', 'د', 'ڈ', 'ذ', 'ر', 'ڑ', 'ز', 'ژ', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ک', 'گ', 'ل', 'م', 'ن', 'ں', 'و', 'ہ', 'ھ','ء', 'ی', 'ے',],
-};
-
 // Initialize keyboard modal
 function initializeUrduKeyboard() {
   const keyboardBtn = document.getElementById('keyboardBtn');
@@ -403,79 +398,129 @@ function initializeUrduKeyboard() {
   const closeKeyboardBtn = document.getElementById('closeKeyboardBtn');
   const keyboardOverlay = document.querySelector('.keyboard-overlay');
   const keyboardLayout = document.getElementById('keyboardLayout');
-  const nameInput = document.getElementById('nameInput');
+
+  // Urdu alphabet characters
+  const urduChars = [
+      'ا', 'ب', 'پ', 'ت', 'ٹ', 'ث', 'ج', 'چ', 'ح', 'خ', 
+      'د', 'ڈ', 'ذ', 'ر', 'ڑ', 'ز', 'ژ', 'س', 'ش', 'ص', 
+      'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ک', 'گ', 'ل', 
+      'م', 'ن', 'ں', 'و', 'ہ', 'ھ', 'ء', 'ی', 'ے'
+  ];
 
   // Build keyboard layout
   function buildKeyboard() {
     if (!keyboardLayout) return;
     keyboardLayout.innerHTML = '';
     
-    for (const [groupName, letters] of Object.entries(urduKeyboardLayout)) {
-      letters.forEach(letter => {
+    // Custom rows matching the user provided image sequence combined with full alphabet
+    // Row 1: 10 chars
+    const row1Chars = ['ظ', 'ض', 'ذ', 'ڈ', 'ث', 'ٹ', 'ت', 'پ', 'چ', 'خ'];
+    
+    // Row 2: 11 chars (Added 'Alif Madd' here)
+    const row2Chars = ['ژ', 'ز', 'ڑ', 'ر', 'ب', 'ہ', 'ء', 'آ', 'گ', 'ی', 'ل'];
+    
+    // Row 3: 10 chars
+    const row3Chars = ['ص', 'س', 'د', 'ا', 'و', 'ے', 'م', 'ن', 'ک', 'ف'];
+    
+    // Row 4: 9 chars + Backspace
+    const row4Chars = ['ط', 'ش', 'ج', 'ح', 'ع', 'غ', 'ق', 'ھ', 'ں'];
+
+    const rows = [row1Chars, row2Chars, row3Chars, row4Chars];
+
+    // Helper to create a row div
+    const createRow = () => {
+        const row = document.createElement('div');
+        row.className = 'keyboard-row';
+        return row;
+    };
+
+    // Helper to create a key button
+    const createKey = (char) => {
         const key = document.createElement('button');
         key.type = 'button';
         key.className = 'keyboard-key';
-        key.textContent = letter;
+        key.textContent = char;
         key.addEventListener('click', (e) => {
-          e.preventDefault();
-          insertCharacter(letter);
+            e.preventDefault();
+            e.stopPropagation(); // Prevent focus loss issues
+            insertCharacter(char);
         });
-        keyboardLayout.appendChild(key);
-      });
-    }
-    // Action row: Backspace, Space, Enter
-    // Backspace
-    const backBtn = document.createElement('button');
-    backBtn.type = 'button';
-    backBtn.className = 'keyboard-key key-backspace';
-    backBtn.title = 'Backspace';
-    backBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6H9l-5 6 5 6h11"></path><line x1="17" y1="9" x2="12" y2="14"></line><line x1="12" y1="9" x2="17" y2="14"></line></svg>';
-    backBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      // Backspace behavior: remove selection or previous char
-      const start = (typeof nameInput.selectionStart === 'number') ? nameInput.selectionStart : 0;
-      const end = (typeof nameInput.selectionEnd === 'number') ? nameInput.selectionEnd : start;
-      if (start === end) {
-        if (start > 0) {
-          nameInput.value = nameInput.value.slice(0, start - 1) + nameInput.value.slice(end);
-          try { nameInput.selectionStart = nameInput.selectionEnd = start - 1; } catch (e) {}
-        }
-      } else {
-        nameInput.value = nameInput.value.slice(0, start) + nameInput.value.slice(end);
-        try { nameInput.selectionStart = nameInput.selectionEnd = start; } catch (e) {}
-      }
-    });
-    keyboardLayout.appendChild(backBtn);
+        return key;
+    };
 
+    // Render Character Rows
+    rows.forEach((chars, index) => {
+        const rowDiv = createRow();
+        
+        chars.forEach(char => {
+            rowDiv.appendChild(createKey(char));
+        });
+
+        // Add Backspace to end of Row 4
+        if (index === 3) {
+             const backBtn = document.createElement('button');
+             backBtn.type = 'button';
+             backBtn.className = 'keyboard-key key-backspace';
+             backBtn.innerHTML = '⌫';
+             backBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const start = (typeof nameInput.selectionStart === 'number') ? nameInput.selectionStart : 0;
+                const end = (typeof nameInput.selectionEnd === 'number') ? nameInput.selectionEnd : start;
+                if (start === end) {
+                    if (start > 0) {
+                        nameInput.value = nameInput.value.slice(0, start - 1) + nameInput.value.slice(end);
+                        try { 
+                            nameInput.focus();
+                            nameInput.setSelectionRange(start - 1, start - 1);
+                        } catch (e) {}
+                    }
+                } else {
+                    nameInput.value = nameInput.value.slice(0, start) + nameInput.value.slice(end);
+                    try { 
+                        nameInput.focus();
+                        nameInput.setSelectionRange(start, start);
+                    } catch (e) {}
+                }
+             });
+             rowDiv.appendChild(backBtn);
+        }
+
+        keyboardLayout.appendChild(rowDiv);
+    });
+
+    // Row 5: Action Row (Space, Enter)
+    const actionRow = createRow();
+    
     // Space
     const spaceBtn = document.createElement('button');
     spaceBtn.type = 'button';
     spaceBtn.className = 'keyboard-key key-space';
-    spaceBtn.title = 'Space';
-    spaceBtn.innerHTML = '';
+    spaceBtn.textContent = 'Space';
     spaceBtn.addEventListener('click', (e) => {
       e.preventDefault();
       insertCharacter(' ');
     });
-    keyboardLayout.appendChild(spaceBtn);
+    actionRow.appendChild(spaceBtn);
 
     // Enter
     const enterBtn = document.createElement('button');
     enterBtn.type = 'button';
     enterBtn.className = 'keyboard-key key-enter';
-    enterBtn.title = 'Enter';
-    enterBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 4 6 9 1"></polyline><path d="M20 6v7a4 4 0 0 1-4 4H4"></path></svg>';
+    enterBtn.textContent = 'Enter';
     enterBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      // Trigger main calculate button if present, else insert newline
       if (typeof calculateBtn !== 'undefined' && calculateBtn) {
         calculateBtn.click();
+        closeKeyboard();
       } else {
         insertCharacter('\n');
       }
     });
-    keyboardLayout.appendChild(enterBtn);
+    actionRow.appendChild(enterBtn);
+
+    keyboardLayout.appendChild(actionRow);
   }
+
 
   // Insert character at cursor position
   function insertCharacter(char) {
@@ -483,22 +528,26 @@ function initializeUrduKeyboard() {
     const end = (typeof nameInput.selectionEnd === 'number') ? nameInput.selectionEnd : start;
     const text = nameInput.value || '';
     nameInput.value = text.substring(0, start) + char + text.substring(end);
-    try { nameInput.selectionStart = nameInput.selectionEnd = start + char.length; } catch (e) {}
+    try { 
+        nameInput.focus();
+        nameInput.setSelectionRange(start + char.length, start + char.length);
+    } catch (e) {}
   }
 
   // Open keyboard
   function openKeyboard() {
     if (!keyboardModal) return;
-    // make input readonly to prevent mobile virtual keyboard
-    try { nameInput.setAttribute('readonly', ''); } catch (e) {}
+    // Set inputmode to none to prevent system keyboard, but keep focus/caret working
+    try { nameInput.setAttribute('inputmode', 'none'); } catch (e) {}
     keyboardModal.classList.add('open');
     buildKeyboard();
+    nameInput.focus();
   }
 
   // Close keyboard
   function closeKeyboard() {
     if (!keyboardModal) return;
-    try { nameInput.removeAttribute('readonly'); } catch (e) {}
+    try { nameInput.removeAttribute('inputmode'); } catch (e) {}
     keyboardModal.classList.remove('open');
   }
 
